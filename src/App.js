@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import styled from 'styled-components'
-import Carrinho from './components/Carrinho.js'
-import { CardFiltro } from './Components/Filtro'
+import styled from "styled-components";
+import Carrinho from "./components/Carrinho.js";
+import { CardFiltro } from "./components/Filtro";
 import TabelaProdutos from "./components/TabelaProdutos";
 
 const DivPainel = styled.div`
@@ -21,27 +21,54 @@ const DivHeader = styled.div`
 `;
 
 class App extends React.Component {
+  state = {
+    arrayProdutos: [
+      {
+        nomeProduto: "Teste1",
+        valorProduto: 10,
+      },
+      {
+        nomeProduto: "Teste2",
+        valorProduto: 20,
+      },
+      {
+        nomeProduto: "Teste1",
+        valorProduto: 30,
+      },
+      {
+        nomeProduto: "Teste1",
+        valorProduto: 40,
+      },
+      {
+        nomeProduto: "Teste1",
+        valorProduto: 40,
+      },
+    ],
+  };
+
   render() {
+    const quantidadeProdutos = this.state.arrayProdutos.length;
+
+    const produtosRender = this.state.arrayProdutos.map((produto) => {
+      return (
+        <TabelaProdutos
+          nomeDoProduto={produto.nomeProduto}
+          valorProduto={produto.valorProduto}
+        />
+      );
+    });
+
     return (
       <div className="App">
-         <CardFiltro />
-         <Carrinho />
+        <CardFiltro />
         <DivHeader>
-          <p>Quantidade de Produtos: </p>
+          <p>Quantidade de Produtos: {quantidadeProdutos} </p>
           <select>
             <option value="Crescente">Crescente</option>
             <option value="Decrescente">Decrescente</option>
           </select>
         </DivHeader>
-        <DivPainel>
-          <TabelaProdutos nomeDoProduto={"Teste 1"} valorProduto={"R$100"} />
-          <TabelaProdutos nomeDoProduto={"Teste 2"} valorProduto={"R$200"} />
-          <TabelaProdutos nomeDoProduto={"Teste 3"} valorProduto={"R$300"} />
-          <TabelaProdutos nomeDoProduto={"Teste 4"} valorProduto={"R$400"} />
-          <TabelaProdutos nomeDoProduto={"Teste 4"} valorProduto={"R$400"} />
-          <TabelaProdutos nomeDoProduto={"Teste 4"} valorProduto={"R$400"} />
-          <TabelaProdutos nomeDoProduto={"Teste 4"} valorProduto={"R$400"} />
-        </DivPainel>
+        <DivPainel>{produtosRender}</DivPainel>
       </div>
     );
   }
