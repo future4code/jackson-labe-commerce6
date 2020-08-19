@@ -4,13 +4,15 @@ import styled from 'styled-components'
 const ContainerFiltro = styled.div `
     display: flex;
     flex-direction: column;
-    `
+    width: 15%;
+    padding: 1%;
+    border: 1px solid black;
+`
 
-
-export class CardFiltro extends React.Component {
+export class CardFiltro extends React.Component {  
     render(){
         return (
-            <div>
+            <ContainerFiltro>
                 <h2>Filtros:</h2>
                 <label for="valorMinimo">Valor mínimo</label>
                 <input 
@@ -29,10 +31,10 @@ export class CardFiltro extends React.Component {
                 <label for="buscarProduto">Buscar produto:</label>
                 <input 
                     type="text" 
-                    placeholder="nome do produto" 
+                    placeholder="Nome do produto" 
                     name="buscarProduto" 
                 />
-            </div>
+            </ContainerFiltro>
         )
     }
 }
