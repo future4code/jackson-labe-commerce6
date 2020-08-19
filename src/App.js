@@ -41,9 +41,32 @@ class App extends React.Component {
       },
       {
         nomeProduto: "Teste1",
-        valorProduto: 40,
+        valorProduto: 20,
       },
     ],
+    filtroCrescente: "",
+  };
+
+  onChangeFiltroCrescente = (event) => {
+    this.setState({
+      filtroCrescente: event.target.value,
+    });
+
+    switch (this.state.filtroCrescente) {
+      case "crescente":
+        return this.setState({
+          arrayProdutos: this.state.arrayProdutos.sort(function (a, b) {
+            return b.valorProduto - a.valorProduto;
+          }),
+        });
+
+      case "decrescente":
+        return this.setState({
+          arrayProdutos: this.state.arrayProdutos.sort(function (a, b) {
+            return a.valorProduto - b.valorProduto;
+          }),
+        });
+    }
   };
 
   render() {
@@ -63,9 +86,12 @@ class App extends React.Component {
         <CardFiltro />
         <DivHeader>
           <p>Quantidade de Produtos: {quantidadeProdutos} </p>
-          <select>
-            <option value="Crescente">Crescente</option>
-            <option value="Decrescente">Decrescente</option>
+          <select
+            value={this.state.filtroCrescente}
+            onChange={this.onChangeFiltroCrescente}
+          >
+            <option value="crescente">Crescente</option>
+            <option value="decrescente">Decrescente</option>
           </select>
         </DivHeader>
         <DivPainel>{produtosRender}</DivPainel>
