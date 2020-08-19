@@ -1,7 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-
 import "./App.css";
+import styled from 'styled-components'
+import Carrinho from './components/Carrinho.js'
+import { CardFiltro } from './Components/Filtro'
 import TabelaProdutos from "./components/TabelaProdutos";
 
 const DivPainel = styled.div`
@@ -23,6 +24,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+         <CardFiltro />
+         <Carrinho />
         <DivHeader>
           <p>Quantidade de Produtos: </p>
           <select>
