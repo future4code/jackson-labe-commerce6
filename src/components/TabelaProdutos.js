@@ -4,7 +4,7 @@ import styled from "styled-components";
 const DivTabela = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid orange;
+  border: 1px solid black;
   justify-content: center;
   margin: 20px 20px;
 `;
