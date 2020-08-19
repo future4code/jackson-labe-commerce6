@@ -22,7 +22,6 @@ const DivHeader = styled.div`
 
 class App extends React.Component {
   state = {
-    contador: 0,
     arrayProdutos: [
       {
         nomeProduto: "Teste1",
@@ -40,10 +39,16 @@ class App extends React.Component {
         nomeProduto: "Teste1",
         valorProduto: 40,
       },
+      {
+        nomeProduto: "Teste1",
+        valorProduto: 40,
+      },
     ],
   };
 
   render() {
+    const quantidadeProdutos = this.state.arrayProdutos.length;
+
     const produtosRender = this.state.arrayProdutos.map((produto) => {
       return (
         <TabelaProdutos
@@ -56,9 +61,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <CardFiltro />
-        <Carrinho />
         <DivHeader>
-          <p>Quantidade de Produtos: </p>
+          <p>Quantidade de Produtos: {quantidadeProdutos} </p>
           <select>
             <option value="Crescente">Crescente</option>
             <option value="Decrescente">Decrescente</option>
