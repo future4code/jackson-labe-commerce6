@@ -20,7 +20,26 @@ const DivHeader = styled.div`
 `;
 
 class App extends React.Component {
+  state = {
+    contador: 0,
+    arrayProdutos: [
+      {
+        nomeProduto: "Teste1",
+        valorProduto: "10",
+      },
+    ],
+  };
+
   render() {
+    const produtosRender = this.state.arrayProdutos.map((produto) => {
+      return (
+        <TabelaProdutos
+          nomeDoProduto={produto.nomeProduto}
+          valorProduto={produto.valorProduto}
+        />
+      );
+    });
+
     return (
       <div className="App">
         <DivHeader>
@@ -30,15 +49,7 @@ class App extends React.Component {
             <option value="Decrescente">Decrescente</option>
           </select>
         </DivHeader>
-        <DivPainel>
-          <TabelaProdutos nomeDoProduto={"Teste 1"} valorProduto={"R$100"} />
-          <TabelaProdutos nomeDoProduto={"Teste 2"} valorProduto={"R$200"} />
-          <TabelaProdutos nomeDoProduto={"Teste 3"} valorProduto={"R$300"} />
-          <TabelaProdutos nomeDoProduto={"Teste 4"} valorProduto={"R$400"} />
-          <TabelaProdutos nomeDoProduto={"Teste 4"} valorProduto={"R$400"} />
-          <TabelaProdutos nomeDoProduto={"Teste 4"} valorProduto={"R$400"} />
-          <TabelaProdutos nomeDoProduto={"Teste 4"} valorProduto={"R$400"} />
-        </DivPainel>
+        <DivPainel>{produtosRender}</DivPainel>
       </div>
     );
   }
