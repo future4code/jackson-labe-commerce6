@@ -1,11 +1,11 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { CardFiltro } from './Components/Filtro'
 
 function App() {
   return (
-    <div className="App">
-      <TabelaProdutos nomeDoProduto={} valorDoProduto={}></TabelaProdutos>
+    <div>     
+      <CardFiltro />
     </div>
   );
 }
