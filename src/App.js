@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import styled from 'styled-components'
-import Carrinho from './components/Carrinho.js'
-import { CardFiltro } from './Components/Filtro'
+import styled from "styled-components";
+import Carrinho from "./components/Carrinho.js";
+import { CardFiltro } from "./components/Filtro";
 import TabelaProdutos from "./components/TabelaProdutos";
 
 const DivPainel = styled.div`
@@ -26,7 +26,19 @@ class App extends React.Component {
     arrayProdutos: [
       {
         nomeProduto: "Teste1",
-        valorProduto: "10",
+        valorProduto: 10,
+      },
+      {
+        nomeProduto: "Teste2",
+        valorProduto: 20,
+      },
+      {
+        nomeProduto: "Teste1",
+        valorProduto: 30,
+      },
+      {
+        nomeProduto: "Teste1",
+        valorProduto: 40,
       },
     ],
   };
@@ -43,8 +55,8 @@ class App extends React.Component {
 
     return (
       <div className="App">
-         <CardFiltro />
-         <Carrinho />
+        <CardFiltro />
+        <Carrinho />
         <DivHeader>
           <p>Quantidade de Produtos: </p>
           <select>
