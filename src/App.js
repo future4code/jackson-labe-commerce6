@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
 import styled from "styled-components";
-import Carrinho from "./components/Carrinho.js";
-import { CardFiltro } from "./components/Filtro";
-import TabelaProdutos from "./components/TabelaProdutos";
+//import Carrinho from "./components/Carrinho.js";
+import { CardFiltro } from "./Components/Filtro.js";
+import TabelaProdutos from "./Components/TabelaProdutos";
 
 const DivPainel = styled.div`
   display: flex;
