@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import styled from "styled-components";
 //import Carrinho from "./components/Carrinho.js";
-import { CardFiltro } from "./Components/Filtro.js";
+import { CardFiltro } from "./Components/CardFiltro.js";
 import TabelaProdutos from "./Components/TabelaProdutos";
 
 const DivPainel = styled.div`
@@ -56,11 +56,15 @@ class App extends React.Component {
           valorProduto={produto.valorProduto}
         />
       );
-    });
+    });  
+    
+    const produtosFiltrados = (parametro) => {
+        console.log(parametro[0])
+    }    
 
     return (
       <div className="App">
-        <CardFiltro />
+        <CardFiltro filtroProdutos={produtosRender} osProdutos={produtosFiltrados}/>               
         <DivHeader>
           <p>Quantidade de Produtos: {quantidadeProdutos} </p>
           <select>
@@ -69,6 +73,7 @@ class App extends React.Component {
           </select>
         </DivHeader>
         <DivPainel>{produtosRender}</DivPainel>
+        {produtosFiltrados} 
       </div>
     );
   }

@@ -12,10 +12,9 @@ const ContainerFiltro = styled.div `
 
 export class CardFiltro extends React.Component {  
     state = {
-        valorInputMinimo: '',
-        valorInputMaximo: '',
-        valorInputBusca: '',
-        arrayFiltro: []
+        valorInputMinimo: undefined,
+        valorInputMaximo: undefined,
+        valorInputBusca: undefined,             
     }
 
     onChangeInputMinimo = (e) => {
@@ -29,22 +28,22 @@ export class CardFiltro extends React.Component {
     onChangeInputBusca = (e) => {
         this.setState({valorInputBusca: e.target.value})
     }
-
-    onClickBuscar = () => {
-        const novoFiltro = {
-            valorInputMinimo: this.state.valorInputMinimo,
-            valorInputMaximo: this.state.valorInputMaximo,
-            valorInputBusca: this.state.valorInputBusca
-        }
-
-        const todosOsFiltros = [...this.state.arrayFiltro, novoFiltro]
-        this.setState({arrayFiltro: todosOsFiltros})        
-    }
-
-    render(){
     
+    render(){           
+
+        const filtrarValor = this.props.filtroProdutos.map((produto) => {
+           if(produto.props.valorProduto >= this.state.valorInputMinimo && produto.props.valorProduto <= this.state.valorInputMaximo && this.state.valorInputBusca === undefined) {              
+               return produto.props           
+
+           } else if (produto.props.valorProduto >= this.state.valorInputMinimo && produto.props.valorProduto <= this.state.valorInputMaximo && produto.props.nomeDoProduto === this.state.valorInputBusca){                
+                return produto.props         
+        }})
+        
+        this.props.osProdutos(filtrarValor)
+      
         return (
-            <ContainerFiltro>
+            <ContainerFiltro>     
+                                                      
                 <h2>Filtros:</h2>
                 <label for="valorMinimo">Valor mínimo</label>
                 <input 
@@ -70,7 +69,6 @@ export class CardFiltro extends React.Component {
                     name="buscarProduto"
                     onChange={this.onChangeInputBusca}
                 />
-                <button onClick={this.onClickAdicionar}>Buscar Produtos</button>
             </ContainerFiltro>
         )
     }
