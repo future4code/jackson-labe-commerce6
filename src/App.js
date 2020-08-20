@@ -2,22 +2,14 @@ import React from "react";
 import "./App.css";
 import styled from "styled-components";
 import Carrinho from "./components/Carrinho.js";
-import { CardFiltro } from "./components/Filtro";
+import CardFiltro from "./components/CardFiltro";
 import TabelaProdutos from "./components/TabelaProdutos";
+import ContadorFiltro from "./components/ContadorFiltro";
 
 const DivPainel = styled.div`
   display: flex;
   max-width: 80%;
   flex-wrap: wrap;
-`;
-
-const DivHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 2em;
-  margin-top: 1em;
-  padding: 1em 3em;
 `;
 
 class App extends React.Component {
@@ -26,22 +18,27 @@ class App extends React.Component {
       {
         nomeProduto: "Teste1",
         valorProduto: 10,
+        id: Date.now(),
       },
       {
         nomeProduto: "Teste2",
         valorProduto: 20,
+        id: Date.now(),
       },
       {
         nomeProduto: "Teste1",
         valorProduto: 30,
+        id: Date.now(),
       },
       {
         nomeProduto: "Teste1",
         valorProduto: 40,
+        id: Date.now(),
       },
       {
         nomeProduto: "Teste1",
         valorProduto: 20,
+        id: Date.now(),
       },
     ],
     filtroCrescente: "",
@@ -84,16 +81,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <CardFiltro />
-        <DivHeader>
-          <p>Quantidade de Produtos: {quantidadeProdutos} </p>
-          <select
-            value={this.state.filtroCrescente}
-            onChange={this.onChangeFiltroCrescente}
-          >
-            <option value="crescente">Crescente</option>
-            <option value="decrescente">Decrescente</option>
-          </select>
-        </DivHeader>
+        <ContadorFiltro
+          contadorProdutos={quantidadeProdutos}
+          filtroOrdem={this.onChangeFiltroCrescente}
+        />
         <DivPainel>{produtosRender}</DivPainel>
       </div>
     );
