@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Carrinho from "./components/Carrinho.js";
 import { CardFiltro } from "./components/Filtro";
 import TabelaProdutos from "./components/TabelaProdutos";
+import Header from "./components/Header";
+import Footer from "./components/Footer"
 
 const DivPainel = styled.div`
   display: flex;
@@ -21,6 +23,14 @@ const DivHeader = styled.div`
 `;
 
 class App extends React.Component {
+  render(){
+    return(
+      <div className="App">
+        <Header/>
+
+      </div>
+    );
+  }
   state = {
     arrayProdutos: [
       {
@@ -70,8 +80,21 @@ class App extends React.Component {
         </DivHeader>
         <DivPainel>{produtosRender}</DivPainel>
       </div>
+      
+    );
+    
+    return(
+      <div className="App">
+        <Footer/>
+
+      </div>
     );
   }
+
+  
+    
+  
 }
+
 
 export default App;
