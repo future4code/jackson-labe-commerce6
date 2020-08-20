@@ -7,7 +7,7 @@ const ContainerFiltro = styled.div `
     flex-direction: column;
     padding: 1%;
     width: 25vw;
-    height: 95vh;
+    height: 200%;
     margin: 1em 1em;
     align-items: center;
     border: 1px dotted #0D33A6;
@@ -38,16 +38,7 @@ export class CardFiltro extends React.Component {
     }
     
     render(){           
-
-        const filtrarValor = this.props.filtroProdutos.map((produto) => {
-           if(produto.props.valorProduto >= this.state.valorInputMinimo && produto.props.valorProduto <= this.state.valorInputMaximo && this.state.valorInputBusca === undefined) {              
-               return produto.props           
-
-           } else if (produto.props.valorProduto >= this.state.valorInputMinimo && produto.props.valorProduto <= this.state.valorInputMaximo && produto.props.nomeDoProduto === this.state.valorInputBusca){                
-                return produto.props         
-        }})
         
-        this.props.osProdutos(filtrarValor)
       
         return (
             <ContainerFiltro>     

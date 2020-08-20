@@ -8,6 +8,7 @@ const DivHeader = styled.div`
   height: 2em;
   margin-top: 1em;
   padding: 1em 3em;
+  color: white;
 `;
 
 class ContadorFiltro extends React.Component {
