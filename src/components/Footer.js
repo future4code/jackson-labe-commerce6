@@ -22,6 +22,8 @@ export class Footer extends React.Component{
               <img src={}/>
               <img src={}/>
         */}
+              <p>Contato</p>
+              
             </DivContainerFooter>
           </div>
         );
