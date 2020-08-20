@@ -28,7 +28,9 @@ class TabelaProdutos extends React.Component {
           <img src="https://picsum.photos/200/200?a=1" />
           <h3>{this.props.nomeDoProduto}</h3>
           <p>{this.props.valorProduto}</p>
+
           <ProductsButton>Adicionar ao Carrinho</ProductsButton>
+
         </DivTabela>
       </div>
     );
