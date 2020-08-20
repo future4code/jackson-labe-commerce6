@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Carrinho from "./components/Carrinho.js";
 import CardFiltro from "./components/CardFiltro";
 import TabelaProdutos from "./components/TabelaProdutos";
+import Header from "./components/Header";
+import Footer from "./components/Footer"
 import ContadorFiltro from "./components/ContadorFiltro";
 
 const SectionPagina = styled.section`
@@ -21,6 +23,14 @@ const DivPainel = styled.div`
 `;
 
 class App extends React.Component {
+  render(){
+    return(
+      <div className="App">
+        <Header/>
+
+      </div>
+    );
+  }
   state = {
     arrayProdutos: [
       {
@@ -108,23 +118,43 @@ class App extends React.Component {
           valorProduto={produto.valorProduto}
         />
       );
-    });
+    });  
+    
+    const produtosFiltrados = (parametro) => {
+        console.log(parametro[0])
+    }    
 
     return (
       <div className="App">
         <SectionPagina>
-          <CardFiltro />
-          <ContadorFiltro
-            contadorProdutos={quantidadeProdutos}
-            filtroOrdem={this.onChangeFiltroCrescente}
-          />
+          <CardFiltro filtroProdutos={produtosRender} osProdutos={produtosFiltrados}/>               
+          <DivHeader>
+            <p>Quantidade de Produtos: {quantidadeProdutos} </p>
+            <select>
+              <option value="Crescente">Crescente</option>
+              <option value="Decrescente">Decrescente</option>
+            </select>
+          </DivHeader>
           <DivPainel>{produtosRender}</DivPainel>
+          {produtosFiltrados} 
   
-        </SectionPagina>
-  
+        </SectionPagina>       
+      </div>
+      
+    );
+    
+    return(
+      <div className="App">
+        <Footer/>
+
       </div>
     );
   }
+
+  
+    
+  
 }
+
 
 export default App;
