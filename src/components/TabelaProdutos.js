@@ -1,12 +1,14 @@
+
 import React from "react";
 import styled from "styled-components";
 
 const DivTabela = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px dotted #0D33A6;
   justify-content: center;
   margin: 20px 20px;
+  border: 1px dotted #0D33A6;
+  justify-content: center;
   color: #F2DFE2;
   background-color: transparent;
 `;
@@ -36,9 +38,9 @@ class TabelaProdutos extends React.Component {
           <ImgProduto src={this.props.imagemDoProduto} />
           <h3>{this.props.nomeDoProduto}</h3>
           <p>R$ {this.props.valorProduto}</p>
-
-          <ProductsButton>Adicionar ao Carrinho</ProductsButton>
-
+          <ProductsButton onClick={this.props.funcaoClicar}>
+            Adicionar ao Carrinho
+          </ProductsButton>
         </DivTabela>
       </div>
     );

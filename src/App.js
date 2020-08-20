@@ -33,56 +33,58 @@ class App extends React.Component {
   }
   state = {
     arrayProdutos: [
-      {
-        nomeProduto: "Traje  - Plutão não é mais planeta",
+      { 
+        nomeProduto: "Traje  - Plutão",
         imagemProduto: "https://www.bellacollezione.com/image/cache/catalog/products/masculino/fantasia-astronauta-do-espaco-adulto-mascote-branco-800x800.jpg",
         valorProduto: 100,
-        id: Date.now(),
+        id: 1,
       },
       {
         nomeProduto: "Teste2",
         imagemProduto: "https://www.bellacollezione.com/image/cache/catalog/products/masculino/fantasia-adulto-macacao-de-astronauta-autentico-800x800.jpg",
         valorProduto: 200,
-        id: Date.now(),
+        id: 2,
       },
       {
         nomeProduto: "Teste3",
         imagemProduto: "https://www.dhresource.com/0x0/f2/albu/g9/M01/4E/D1/rBVaVVylqxqAPAhNAARi2g9O04s933.jpg",
         valorProduto: 400,
-        id: Date.now(),
+        id: 3,
       },
       {
         nomeProduto: "Teste4",
         imagemProduto: "https://sc01.alicdn.com/kf/HTB1PsHLbjfguuRjy1zeq6z0KFXaI/231834524/HTB1PsHLbjfguuRjy1zeq6z0KFXaI.jpg_.webp",
         valorProduto: 350,
-        id: Date.now(),
+        id: 4,
       },
       {
         nomeProduto: "Teste5",
         imagemProduto: "https://cdn.awsli.com.br/800x800/488/488909/produto/37825150/5d2946d92d.jpg",
         valorProduto: 220,
-        id: Date.now(),
+        id: 5,
       },
       {
         nomeProduto: "Teste6",
         imagemProduto: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQshlvVSZTG7fBTfDTMst0VgLn7MtzZ3O5oLg&usqp=CAU",
         valorProduto: 150,
-        id: Date.now(),
+        id: 6,
       },
       {
         nomeProduto: "Teste7",
         imagemProduto: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQc009wYjCJNW8er_XXgYK_hhFqEe_lZ-SRJQ&usqp=CAU",
         valorProduto: 250,
-        id: Date.now(),
+        id: 7,
       },
       {
         nomeProduto: "Teste8",
         imagemProduto: "https://www.bellacollezione.com/image/cache/catalog/products/infantil/fantasia-infantil-astronauta-classica-800x800.jpg",
         valorProduto: 380,
-        id: Date.now(),
+        id: 8,
+
       },
     ],
     filtroCrescente: "",
+    carrinho: [],
   };
 
   onChangeFiltroCrescente = (event) => {
@@ -107,6 +109,19 @@ class App extends React.Component {
     }
   };
 
+  onClickCarrinho = (id) => {
+    const novoCarrinho = this.state.carrinho;
+
+    const newProductArray = this.state.arrayProdutos.filter((produto) => {
+      if (id === produto.id) {
+        return produto;
+      }
+    });
+
+    novoCarrinho.push(newProductArray[0]);
+
+    this.setState({ carrinho: novoCarrinho });
+  };
   render() {
     const quantidadeProdutos = this.state.arrayProdutos.length;
 
@@ -116,6 +131,7 @@ class App extends React.Component {
           imagemDoProduto={produto.imagemProduto}
           nomeDoProduto={produto.nomeProduto}
           valorProduto={produto.valorProduto}
+          funcaoClicar={() => this.onClickCarrinho(produto.id)}
         />
       );
     });  
@@ -124,35 +140,37 @@ class App extends React.Component {
         console.log(parametro[0])
     }    
 
+    const carrinhoRender = () => {
+      const itensCarrinho = this.state.carrinho.map((produto) => {
+        return (
+          <div>
+            <p>Produto: {produto.nomeProduto}</p>
+            <p>Valor: R${produto.valorProduto}</p>
+          </div>
+        );
+      });
+      console.log(itensCarrinho);
+      return itensCarrinho;
+    };
+
     return (
       <div className="App">
         <SectionPagina>
-          <CardFiltro filtroProdutos={produtosRender} osProdutos={produtosFiltrados}/>               
-          <DivHeader>
-            <p>Quantidade de Produtos: {quantidadeProdutos} </p>
-            <select>
-              <option value="Crescente">Crescente</option>
-              <option value="Decrescente">Decrescente</option>
-            </select>
-          </DivHeader>
+
+          <CardFiltro />
+            <ContadorFiltro
+            contadorProdutos={quantidadeProdutos}
+            filtroOrdem={this.onChangeFiltroCrescente}
+          />
           <DivPainel>{produtosRender}</DivPainel>
-          {produtosFiltrados} 
-  
+
+          <Carrinho funcaoCarrinho={carrinhoRender()}></Carrinho>
+
         </SectionPagina>       
-      </div>
-      
-    );
-    
-    return(
-      <div className="App">
         <Footer/>
-
       </div>
     );
-  }
-
-  
-    
+  }  
   
 }
 
