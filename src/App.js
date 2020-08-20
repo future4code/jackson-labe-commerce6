@@ -12,10 +12,6 @@ const DivPainel = styled.div`
   flex-wrap: wrap;
 `;
 
-const liTeste = styled.li`
-  text-align: left;
-`;
-
 class App extends React.Component {
   state = {
     arrayProdutos: [
@@ -83,10 +79,6 @@ class App extends React.Component {
     novoCarrinho.push(newProductArray[0]);
 
     this.setState({ carrinho: novoCarrinho });
-
-    console.log(novoCarrinho);
-    console.log(newProductArray);
-    console.log(this.state.carrinho);
   };
   render() {
     const quantidadeProdutos = this.state.arrayProdutos.length;

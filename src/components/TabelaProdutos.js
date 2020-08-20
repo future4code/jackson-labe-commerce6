@@ -25,7 +25,7 @@ class TabelaProdutos extends React.Component {
     return (
       <div>
         <DivTabela>
-          <img src="https://picsum.photos/200/200?a=1" />
+          <img src={"https://picsum.photos/200/200?a=1"} />
           <h3>{this.props.nomeDoProduto}</h3>
           <p>{this.props.valorProduto}</p>
           <ProductsButton onClick={this.props.funcaoClicar}>
