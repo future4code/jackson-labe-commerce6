@@ -20,13 +20,6 @@ const ProductsButton = styled.button`
   }
 `;
 
-adicionaProduto = () => {
-  const produtoCarrinho = {
-    nomeProdutoCart: this.state.nomeProduto,
-    valorProdutoCart: this.state.valorProduto
-  }
-}
-
 class TabelaProdutos extends React.Component {
   render() {
     return (
@@ -35,7 +28,9 @@ class TabelaProdutos extends React.Component {
           <img src="https://picsum.photos/200/200?a=1" />
           <h3>{this.props.nomeDoProduto}</h3>
           <p>{this.props.valorProduto}</p>
-          <ProductsButton onClick={this.adicionaProduto} >Adicionar ao Carrinho</ProductsButton>
+
+          <ProductsButton>Adicionar ao Carrinho</ProductsButton>
+
         </DivTabela>
       </div>
     );
