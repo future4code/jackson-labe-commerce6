@@ -12,36 +12,41 @@ const DivPainel = styled.div`
   flex-wrap: wrap;
 `;
 
+const liTeste = styled.li`
+  text-align: left;
+`;
+
 class App extends React.Component {
   state = {
     arrayProdutos: [
       {
         nomeProduto: "Teste1",
         valorProduto: 10,
-        id: Date.now(),
+        id: 1,
       },
       {
         nomeProduto: "Teste2",
         valorProduto: 20,
-        id: Date.now(),
+        id: 2,
       },
       {
         nomeProduto: "Teste1",
         valorProduto: 30,
-        id: Date.now(),
+        id: 3,
       },
       {
         nomeProduto: "Teste1",
         valorProduto: 40,
-        id: Date.now(),
+        id: 4,
       },
       {
         nomeProduto: "Teste1",
         valorProduto: 20,
-        id: Date.now(),
+        id: 5,
       },
     ],
     filtroCrescente: "",
+    carrinho: [],
   };
 
   onChangeFiltroCrescente = (event) => {
@@ -66,6 +71,23 @@ class App extends React.Component {
     }
   };
 
+  onClickCarrinho = (id) => {
+    const novoCarrinho = this.state.carrinho;
+
+    const newProductArray = this.state.arrayProdutos.filter((produto) => {
+      if (id === produto.id) {
+        return produto;
+      }
+    });
+
+    novoCarrinho.push(newProductArray[0]);
+
+    this.setState({ carrinho: novoCarrinho });
+
+    console.log(novoCarrinho);
+    console.log(newProductArray);
+    console.log(this.state.carrinho);
+  };
   render() {
     const quantidadeProdutos = this.state.arrayProdutos.length;
 
@@ -74,9 +96,23 @@ class App extends React.Component {
         <TabelaProdutos
           nomeDoProduto={produto.nomeProduto}
           valorProduto={produto.valorProduto}
+          funcaoClicar={() => this.onClickCarrinho(produto.id)}
         />
       );
     });
+
+    const carrinhoRender = () => {
+      const itensCarrinho = this.state.carrinho.map((produto) => {
+        return (
+          <div>
+            <p>Produto: {produto.nomeProduto}</p>
+            <p>Valor: R${produto.valorProduto}</p>
+          </div>
+        );
+      });
+      console.log(itensCarrinho);
+      return itensCarrinho;
+    };
 
     return (
       <div className="App">
@@ -86,6 +122,8 @@ class App extends React.Component {
           filtroOrdem={this.onChangeFiltroCrescente}
         />
         <DivPainel>{produtosRender}</DivPainel>
+
+        <Carrinho funcaoCarrinho={carrinhoRender()}></Carrinho>
       </div>
     );
   }
