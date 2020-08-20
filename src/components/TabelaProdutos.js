@@ -4,19 +4,27 @@ import styled from "styled-components";
 const DivTabela = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px dotted #0D33A6;
   justify-content: center;
   margin: 20px 20px;
+  color: #F2DFE2;
+  background-color: transparent;
+`;
+
+const ImgProduto = styled.img`
+  width: 200px;
+  height: 200px;
 `;
 
 const ProductsButton = styled.button`
   margin: 5px 5px;
-  background-color: black;
+  background-color: #0D33A6;
   border: none;
-  color: white;
+  color: #F2DFE2;
   height: 2em;
   &:hover {
-    background-color: orange;
+    background-color: #D94141;
+    color: #031226;
   }
 `;
 
@@ -25,9 +33,9 @@ class TabelaProdutos extends React.Component {
     return (
       <div>
         <DivTabela>
-          <img src="https://picsum.photos/200/200?a=1" />
+          <ImgProduto src={this.props.imagemDoProduto} />
           <h3>{this.props.nomeDoProduto}</h3>
-          <p>{this.props.valorProduto}</p>
+          <p>R$ {this.props.valorProduto}</p>
 
           <ProductsButton>Adicionar ao Carrinho</ProductsButton>
 

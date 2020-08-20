@@ -4,10 +4,12 @@ import styled from "styled-components";
 const ContainerFiltro = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 25vw;
+  height: 95vh;
   margin: 1em 1em;
   align-items: center;
-  border: 1px solid black;
+  border: 1px dotted #0D33A6;
+  color: #F2DFE2;
 `;
 
 const InputFiltro = styled.input`

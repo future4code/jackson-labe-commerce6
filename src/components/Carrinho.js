@@ -2,12 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 const ContainerCarrinho = styled.div`
-    border: solid 1px black;
-    margin: 1%;
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
     height: 95vh;
-    width: 20vw;
-    text-align: left;
-    padding-left: 1%;
+    margin: 1em 1em;
+    align-items: center;
+    border: 1px dotted #0D33A6;
+    color: #F2DFE2;
 `
 
 export class Carrinho extends React.Component {
