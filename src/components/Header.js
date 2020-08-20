@@ -4,10 +4,10 @@ import background from "../img/astronauta.jpg";
 
 
 const DivContainerHeader = styled.div`
-display: flex;
-justify-content: space-between;
-margin: 2px 2px;
-border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 2px;
+  border: 1px solid black;
 `
 
 export class Header extends React.Component{

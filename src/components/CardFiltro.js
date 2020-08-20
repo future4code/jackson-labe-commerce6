@@ -6,7 +6,7 @@ const ContainerFiltro = styled.div `
     flex-direction: column;
     padding: 1%;
     width: 25vw;
-    height: 95vh;
+    height: 200%;
     margin: 1em 1em;
     align-items: center;
     border: 1px dotted #0D33A6;
