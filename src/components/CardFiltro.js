@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import TabelaProdutos from './TabelaProdutos'
 
 const ContainerFiltro = styled.div `
     display: flex;
@@ -13,33 +12,10 @@ const ContainerFiltro = styled.div `
     border: 1px dotted #0D33A6;
     color: #F2DFE2;
 `
-const InputFiltro = styled.input`
-  width: 40%;
-  margin: 20px 0;
-`;
-
 export class CardFiltro extends React.Component {  
-    state = {
-        valorInputMinimo: undefined,
-        valorInputMaximo: undefined,
-        valorInputBusca: undefined,             
-    }
-
-    onChangeInputMinimo = (e) => {
-       this.setState({valorInputMinimo: e.target.value})      
-    }
     
-    onChangInputMaximo = (e) => {
-        this.setState({valorInputMaximo: e.target.value})
-    }
+    render(){          
 
-    onChangeInputBusca = (e) => {
-        this.setState({valorInputBusca: e.target.value})
-    }
-    
-    render(){           
-        
-      
         return (
             <ContainerFiltro>     
                                                       
@@ -48,9 +24,8 @@ export class CardFiltro extends React.Component {
                 <input 
                     type="number" 
                     placeholder="Valor mínimo" 
-                    name="buscarProduto"
-                    value={this.state.valorInputMinimo}
-                    onChange={this.onChangeInputMinimo}
+                    name="buscarProduto"                   
+                    onChange={this.props.inputMinimo}
                 />
 
                 <label for="valorMaximo">Valor máximo</label>
@@ -58,7 +33,7 @@ export class CardFiltro extends React.Component {
                     type="number" 
                     placeholder="Valor máximo" 
                     name="buscarProduto"
-                    onChange={this.onChangInputMaximo}
+                    onChange={this.props.inputMaximo}
                 />
 
                 <label for="buscarProduto">Buscar produto:</label>
@@ -66,7 +41,7 @@ export class CardFiltro extends React.Component {
                     type="text" 
                     placeholder="Nome do produto" 
                     name="buscarProduto"
-                    onChange={this.onChangeInputBusca}
+                    onChange={this.props.inputBusca}
                 />
             </ContainerFiltro>
         )
