@@ -86,16 +86,24 @@ class App extends React.Component {
           valorProduto={produto.valorProduto}
         />
       );
-    });
+    });  
+    
+    const produtosFiltrados = (parametro) => {
+        console.log(parametro[0])
+    }    
 
     return (
       <div className="App">
-        <CardFiltro />
-        <ContadorFiltro
-          contadorProdutos={quantidadeProdutos}
-          filtroOrdem={this.onChangeFiltroCrescente}
-        />
+        <CardFiltro filtroProdutos={produtosRender} osProdutos={produtosFiltrados}/>               
+        <DivHeader>
+          <p>Quantidade de Produtos: {quantidadeProdutos} </p>
+          <select>
+            <option value="Crescente">Crescente</option>
+            <option value="Decrescente">Decrescente</option>
+          </select>
+        </DivHeader>
         <DivPainel>{produtosRender}</DivPainel>
+        {produtosFiltrados} 
       </div>
       
     );
