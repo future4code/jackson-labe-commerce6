@@ -5,10 +5,18 @@ import TabelaProdutos from './TabelaProdutos'
 const ContainerFiltro = styled.div `
     display: flex;
     flex-direction: column;
-    width: 15%;
     padding: 1%;
-    border: 1px solid black;
+    width: 25vw;
+    height: 95vh;
+    margin: 1em 1em;
+    align-items: center;
+    border: 1px dotted #0D33A6;
+    color: #F2DFE2;
 `
+const InputFiltro = styled.input`
+  width: 40%;
+  margin: 20px 0;
+`;
 
 export class CardFiltro extends React.Component {  
     state = {
@@ -72,6 +80,7 @@ export class CardFiltro extends React.Component {
             </ContainerFiltro>
         )
     }
+
 }
 
 export default CardFiltro;
