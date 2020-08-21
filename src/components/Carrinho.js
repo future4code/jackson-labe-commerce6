@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const ContainerCarrinho = styled.div`
-  margin: 1%;
   height: 95vh;
   width: 20vw;
   padding-left: 1%;
