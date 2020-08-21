@@ -288,6 +288,7 @@ class App extends React.Component {
             contadorProdutos={quantidadeProdutos}
             filtroOrdem={this.onChangeFiltroCrescente}
           />
+          <DivPainel>{produtosFiltrados}</DivPainel>
           <DivPainel>{produtosRender}</DivPainel>
 
           <Carrinho funcaoCarrinho={carrinhoRender()}></Carrinho>
