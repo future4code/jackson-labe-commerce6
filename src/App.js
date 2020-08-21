@@ -121,19 +121,24 @@ class App extends React.Component {
   };
 
   onChangeFiltroCrescente = (event) => {
+    // Pegando o valor do filtro.
     this.setState({
       filtroCrescente: event.target.value,
     });
 
     switch (this.state.filtroCrescente) {
+      // Caso o filtro seja crescente.
       case "crescente":
+        // Função de comparação, retornando menor pro maior
         return this.setState({
           arrayProdutos: this.state.arrayProdutos.sort(function (a, b) {
             return b.valorProduto - a.valorProduto;
           }),
         });
 
+      // Caso seja decrescente
       case "decrescente":
+        // Função de comparação, retornando maior pro menor
         return this.setState({
           arrayProdutos: this.state.arrayProdutos.sort(function (a, b) {
             return a.valorProduto - b.valorProduto;
@@ -151,8 +156,10 @@ class App extends React.Component {
   };
 
   onClickCarrinho = (id) => {
+    // Cópia do carrinho
     let novoCarrinho = [...this.state.carrinho];
 
+    // Se tiver um produto encontrado no array e esse id for igual ao do produto
     const foundProduct = this.state.arrayProdutos.find((produto) => {
       if (id === produto.id) {
         return true;
@@ -160,11 +167,13 @@ class App extends React.Component {
       return false;
     });
 
+    // Mensagem de erro caso o find não encontre nada.
     if (foundProduct === undefined) {
       console.error("Produto inválido.");
       return;
     }
 
+    // Verificando os produtos no carrinho, se houver, vai retornar true
     const foundProductInCart = novoCarrinho.find((item) => {
       if (id === item.id) {
         return true;
@@ -172,26 +181,29 @@ class App extends React.Component {
       return false;
     });
 
+    // Se não for encontrado nenhum produto,
     if (foundProductInCart === undefined) {
       const newProduct = {
+        // Será criado um novo produto aumentando a quantidade pra 1
         ...foundProduct,
         quantidade: 1,
       };
-      novoCarrinho = [newProduct, ...novoCarrinho];
+      novoCarrinho = [newProduct, ...novoCarrinho]; // Adicionando o produto no carrinho caso não existe nenhum produto igual.
     } else {
       novoCarrinho = novoCarrinho.map((item) => {
+        // Se existir um produto igual
         if (id === item.id) {
           return {
             ...item,
-            quantidade: item.quantidade + 1,
+            quantidade: item.quantidade + 1, // Vou pegar o produto e mudar o item quantidade pra +1
           };
         } else {
-          return item;
+          return item; // Se não for igual, mantenho o item como tá.
         }
       });
     }
 
-    this.setState({ carrinho: novoCarrinho });
+    this.setState({ carrinho: novoCarrinho }); // Atualizando a lista.
   };
   render() {
     const quantidadeProdutos = this.state.arrayProdutos.length;
