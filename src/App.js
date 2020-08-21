@@ -57,6 +57,7 @@ class App extends React.Component {
           "https://www.bellacollezione.com/image/cache/catalog/products/masculino/fantasia-astronauta-do-espaco-adulto-mascote-branco-800x800.jpg",
         valorProduto: 100,
         id: 1,
+        quantidade: 0,
       },
       {
         nomeProduto: "Traje - X",
@@ -64,6 +65,7 @@ class App extends React.Component {
           "https://www.bellacollezione.com/image/cache/catalog/products/masculino/fantasia-adulto-macacao-de-astronauta-autentico-800x800.jpg",
         valorProduto: 200,
         id: 2,
+        quantidade: 0,
       },
       {
         nomeProduto: "Teste3",
@@ -71,6 +73,7 @@ class App extends React.Component {
           "https://www.dhresource.com/0x0/f2/albu/g9/M01/4E/D1/rBVaVVylqxqAPAhNAARi2g9O04s933.jpg",
         valorProduto: 400,
         id: 3,
+        quantidade: 0,
       },
       {
         nomeProduto: "Teste4",
@@ -78,6 +81,7 @@ class App extends React.Component {
           "https://sc01.alicdn.com/kf/HTB1PsHLbjfguuRjy1zeq6z0KFXaI/231834524/HTB1PsHLbjfguuRjy1zeq6z0KFXaI.jpg_.webp",
         valorProduto: 350,
         id: 4,
+        quantidade: 0,
       },
       {
         nomeProduto: "Teste5",
@@ -85,6 +89,7 @@ class App extends React.Component {
           "https://cdn.awsli.com.br/800x800/488/488909/produto/37825150/5d2946d92d.jpg",
         valorProduto: 220,
         id: 5,
+        quantidade: 0,
       },
       {
         nomeProduto: "Teste6",
@@ -92,6 +97,7 @@ class App extends React.Component {
           "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQshlvVSZTG7fBTfDTMst0VgLn7MtzZ3O5oLg&usqp=CAU",
         valorProduto: 150,
         id: 6,
+        quantidade: 0,
       },
       {
         nomeProduto: "Teste7",
@@ -99,6 +105,7 @@ class App extends React.Component {
           "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQc009wYjCJNW8er_XXgYK_hhFqEe_lZ-SRJQ&usqp=CAU",
         valorProduto: 250,
         id: 7,
+        quantidade: 0,
       },
       {
         nomeProduto: "Teste8",
@@ -106,6 +113,7 @@ class App extends React.Component {
           "https://www.bellacollezione.com/image/cache/catalog/products/infantil/fantasia-infantil-astronauta-classica-800x800.jpg",
         valorProduto: 380,
         id: 8,
+        quantidade: 0,
       },
     ],
     filtroCrescente: "",
@@ -136,22 +144,52 @@ class App extends React.Component {
 
   onDelete = (itemDelete) => {
     const novaLista = this.state.carrinho.filter((produto) => {
-      return produto !== itemDelete;
+      return produto.id !== itemDelete.id;
     });
 
     this.setState({ carrinho: novaLista });
   };
 
   onClickCarrinho = (id) => {
-    const novoCarrinho = this.state.carrinho;
+    let novoCarrinho = [...this.state.carrinho];
 
-    const newProductArray = this.state.arrayProdutos.filter((produto) => {
+    const foundProduct = this.state.arrayProdutos.find((produto) => {
       if (id === produto.id) {
-        return produto;
+        return true;
       }
+      return false;
     });
 
-    novoCarrinho.push(newProductArray[0]);
+    if (foundProduct === undefined) {
+      console.error("Produto inválido.");
+      return;
+    }
+
+    const foundProductInCart = novoCarrinho.find((item) => {
+      if (id === item.id) {
+        return true;
+      }
+      return false;
+    });
+
+    if (foundProductInCart === undefined) {
+      const newProduct = {
+        ...foundProduct,
+        quantidade: 1,
+      };
+      novoCarrinho = [newProduct, ...novoCarrinho];
+    } else {
+      novoCarrinho = novoCarrinho.map((item) => {
+        if (id === item.id) {
+          return {
+            ...item,
+            quantidade: item.quantidade + 1,
+          };
+        } else {
+          return item;
+        }
+      });
+    }
 
     this.setState({ carrinho: novoCarrinho });
   };
@@ -175,13 +213,13 @@ class App extends React.Component {
           <DivProdutosCarrinho>
             <p>Produto: {produto.nomeProduto}</p>
             <p>Valor: R${produto.valorProduto}</p>
+            <p>Quantidade: {produto.quantidade}</p>
             <ButtonDelete onClick={() => this.onDelete(produto)}>
               Deletar
             </ButtonDelete>
           </DivProdutosCarrinho>
         );
       });
-      console.log(itensCarrinho);
       return itensCarrinho;
     };
 
