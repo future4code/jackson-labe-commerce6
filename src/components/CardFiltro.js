@@ -46,7 +46,6 @@ export class CardFiltro extends React.Component {
             </ContainerFiltro>
         )
     }
-
 }
 
 export default CardFiltro;
