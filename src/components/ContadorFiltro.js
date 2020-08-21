@@ -3,12 +3,15 @@ import styled from "styled-components";
 
 const DivHeader = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   height: 2em;
   margin-top: 1em;
   padding: 1em 3em;
   color: white;
+  font-size: 14px;
+  
 `;
 
 class ContadorFiltro extends React.Component {

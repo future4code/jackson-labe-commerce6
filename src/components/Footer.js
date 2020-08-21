@@ -4,10 +4,12 @@ import styled from "styled-components";
 
 const DivContainerFooter = styled.div`
 display: flex;
-justify-content:space-between;
-margin: 2px 2px;
-border: 1px solid black;
-background-color: gray;
+justify-content:space-around;
+border: 1px solid #49A695;
+background-color: #D2657C;
+color: #031226;
+width: 100vw;
+font-family: 'Space Mono', monospace;
 `
 
 
