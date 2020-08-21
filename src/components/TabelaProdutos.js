@@ -7,10 +7,11 @@ const DivTabela = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: 20px 20px;
-  border: 1px dotted #0D33A6;
+  border: 1px dotted #49A695;
   justify-content: center;
   color: #F2DFE2;
   background-color: transparent;
+  font-family: 'Space Mono', monospace;
 `;
 
 const ImgProduto = styled.img`
@@ -20,9 +21,9 @@ const ImgProduto = styled.img`
 
 const ProductsButton = styled.button`
   margin: 5px 5px;
-  background-color: #0D33A6;
+  background-color: #49A695;
   border: none;
-  color: #F2DFE2;
+  color: #031226;
   height: 2em;
   &:hover {
     background-color: #D94141;

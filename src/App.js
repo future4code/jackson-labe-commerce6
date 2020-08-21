@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import ContadorFiltro from "./components/ContadorFiltro";
 
 const SectionPagina = styled.section`
-  background-color: #031226;
+  background-color: #322E3F;
   width: 100vw;
   height: 100%;
   color: #f2dfe2;
@@ -273,14 +273,15 @@ class App extends React.Component {
         <Header>
         </Header>
         <SectionPagina>
-          <ContadorFiltro
-            contadorProdutos={quantidadeProdutos}
-            filtroOrdem={this.onChangeFiltroCrescente}
-          />
+
           <CardFiltro
             inputMinimo={this.onChangeInputMinimo}
             inputMaximo={this.onChangeInputMaximo}
             inputBusca={this.onChangeInputBusca}
+          />
+          <ContadorFiltro
+            contadorProdutos={quantidadeProdutos}
+            filtroOrdem={this.onChangeFiltroCrescente}
           />
           <DivPainel>{produtosFiltrados}</DivPainel>
           <DivPainel>{produtosRender}</DivPainel>

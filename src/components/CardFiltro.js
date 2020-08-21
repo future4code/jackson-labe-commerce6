@@ -6,11 +6,12 @@ const ContainerFiltro = styled.div `
     flex-direction: column;
     padding: 1%;
     width: 25vw;
-    height: 200%;
+    height: 95vw;
     margin: 1em 1em;
     align-items: center;
-    border: 1px dotted #0D33A6;
+    border: 1px dotted #49A695;
     color: #F2DFE2;
+    font-family: 'Space Mono', monospace;
 `
 export class CardFiltro extends React.Component {  
     
