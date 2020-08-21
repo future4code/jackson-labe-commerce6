@@ -42,6 +42,15 @@ const ButtonDelete = styled.div`
   }
 `;
 
+const DivHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2em;
+  margin-top: 1em;
+  padding: 1em 3em;
+`;
+
 class App extends React.Component {
   render() {
     return (
@@ -119,7 +128,23 @@ class App extends React.Component {
     ],
     filtroCrescente: "",
     carrinho: [],
+    valorInputMinimo: '',
+    valorInputMaximo: '',
+    valorInputBusca: ''
   };
+
+  onChangeInputMinimo = (e) => {
+    this.setState({valorInputMinimo: e.target.value})   
+  }
+ 
+  onChangeInputMaximo = (e) => {
+      this.setState({valorInputMaximo: e.target.value})
+      console.log(this.state.valorInputMaximo)
+  }
+ 
+  onChangeInputBusca = (e) => {
+      this.setState({valorInputBusca: e.target.value})
+  }
 
   onChangeFiltroCrescente = (event) => {
     // Pegando o valor do filtro.
@@ -219,6 +244,22 @@ class App extends React.Component {
       );
     });
 
+    const filtrarProdutos = this.state.arrayProdutos.filter((produto) => {  
+      if((produto.valorProduto <= this.state.valorInputMaximo && produto.valorProduto >= this.state.valorInputMinimo) || produto.nomeProduto === this.state.valorInputBusca){
+        return produto
+        } 
+      }
+    )
+
+    const produtosFiltrados = filtrarProdutos.map((elemento) => {
+      return (
+        <TabelaProdutos
+          nomeDoProduto={elemento.nomeProduto}
+          valorProduto={elemento.valorProduto}
+        />
+      )
+    })    
+
     const carrinhoRender = () => {
       const itensCarrinho = this.state.carrinho.map((produto) => {
         return (
@@ -238,7 +279,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <SectionPagina>
-          <CardFiltro />
+          <CardFiltro
+            inputMinimo={this.onChangeInputMinimo}
+            inputMaximo={this.onChangeInputMaximo}
+            inputBusca={this.onChangeInputBusca}
+          />
           <ContadorFiltro
             contadorProdutos={quantidadeProdutos}
             filtroOrdem={this.onChangeFiltroCrescente}
