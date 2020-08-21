@@ -30,7 +30,7 @@ const DivProdutosCarrinho = styled.div`
 
 const ButtonDelete = styled.div`
   border-radius: 5px;
-  background-color: #305496;
+  background-color: #0D33A6;
   color: white;
   width: 7em;
   padding: 5px 0;
@@ -38,7 +38,7 @@ const ButtonDelete = styled.div`
   justify-content: center;
   cursor: pointer;
   &:hover {
-    background-color: #254174;
+    background-color: #D94141;
   }
 `;
 
