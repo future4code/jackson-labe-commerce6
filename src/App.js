@@ -22,7 +22,6 @@ const DivPainel = styled.div`
   flex-wrap: wrap;
 `;
 
-
 const DivProdutosCarrinho = styled.div`
   display: flex;
   flex-direction: column;
@@ -33,7 +32,8 @@ const ButtonDelete = styled.div`
   border-radius: 5px;
   background-color: #305496;
   color: white;
-  width: 5em;
+  width: 7em;
+  padding: 5px 0;
   display: flex;
   justify-content: center;
   cursor: pointer;
@@ -42,74 +42,76 @@ const ButtonDelete = styled.div`
   }
 `;
 
-const DivHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 2em;
-  margin-top: 1em;
-  padding: 1em 3em;
-`;
-
 class App extends React.Component {
-
+  render() {
+    return (
+      <div className="App">
+        <Header />
+      </div>
+    );
+  }
   state = {
     arrayProdutos: [
-      { 
-        nomeProduto: "Traje Plutão",
-        imagemProduto: "https://www.bellacollezione.com/image/cache/catalog/products/masculino/fantasia-astronauta-do-espaco-adulto-mascote-branco-800x800.jpg",
+      {
+        nomeProduto: "Traje  - Plutão",
+        imagemProduto:
+          "https://www.bellacollezione.com/image/cache/catalog/products/masculino/fantasia-astronauta-do-espaco-adulto-mascote-branco-800x800.jpg",
         valorProduto: 100,
         id: 1,
         quantidade: 0,
       },
       {
-        nomeProduto: "Traje Mercúrio",
-        imagemProduto: "https://www.bellacollezione.com/image/cache/catalog/products/masculino/fantasia-adulto-macacao-de-astronauta-autentico-800x800.jpg",
+        nomeProduto: "Traje - X",
+        imagemProduto:
+          "https://www.bellacollezione.com/image/cache/catalog/products/masculino/fantasia-adulto-macacao-de-astronauta-autentico-800x800.jpg",
         valorProduto: 200,
         id: 2,
         quantidade: 0,
       },
       {
-
-        nomeProduto: "Traje Saturno",
-        imagemProduto: "https://www.dhresource.com/0x0/f2/albu/g9/M01/4E/D1/rBVaVVylqxqAPAhNAARi2g9O04s933.jpg",
+        nomeProduto: "Teste3",
+        imagemProduto:
+          "https://www.dhresource.com/0x0/f2/albu/g9/M01/4E/D1/rBVaVVylqxqAPAhNAARi2g9O04s933.jpg",
         valorProduto: 400,
         id: 3,
         quantidade: 0,
       },
       {
-
-        nomeProduto: "Traje Vênus",
-        imagemProduto: "https://sc01.alicdn.com/kf/HTB1PsHLbjfguuRjy1zeq6z0KFXaI/231834524/HTB1PsHLbjfguuRjy1zeq6z0KFXaI.jpg_.webp",
+        nomeProduto: "Teste4",
+        imagemProduto:
+          "https://sc01.alicdn.com/kf/HTB1PsHLbjfguuRjy1zeq6z0KFXaI/231834524/HTB1PsHLbjfguuRjy1zeq6z0KFXaI.jpg_.webp",
         valorProduto: 350,
         id: 4,
         quantidade: 0,
       },
       {
-        nomeProduto: "Traje Júpiter",
-        imagemProduto: "https://cdn.awsli.com.br/800x800/488/488909/produto/37825150/5d2946d92d.jpg",
+        nomeProduto: "Teste5",
+        imagemProduto:
+          "https://cdn.awsli.com.br/800x800/488/488909/produto/37825150/5d2946d92d.jpg",
         valorProduto: 220,
         id: 5,
         quantidade: 0,
       },
       {
-
-        nomeProduto: "Traje Marte",
-        imagemProduto: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQshlvVSZTG7fBTfDTMst0VgLn7MtzZ3O5oLg&usqp=CAU",
+        nomeProduto: "Teste6",
+        imagemProduto:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQshlvVSZTG7fBTfDTMst0VgLn7MtzZ3O5oLg&usqp=CAU",
         valorProduto: 150,
         id: 6,
         quantidade: 0,
       },
       {
-        nomeProduto: "Traje Urano",
-        imagemProduto: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQc009wYjCJNW8er_XXgYK_hhFqEe_lZ-SRJQ&usqp=CAU",
+        nomeProduto: "Teste7",
+        imagemProduto:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQc009wYjCJNW8er_XXgYK_hhFqEe_lZ-SRJQ&usqp=CAU",
         valorProduto: 250,
         id: 7,
         quantidade: 0,
       },
       {
-        nomeProduto: "Traje Netuno",
-        imagemProduto: "https://www.bellacollezione.com/image/cache/catalog/products/infantil/fantasia-infantil-astronauta-classica-800x800.jpg",
+        nomeProduto: "Teste8",
+        imagemProduto:
+          "https://www.bellacollezione.com/image/cache/catalog/products/infantil/fantasia-infantil-astronauta-classica-800x800.jpg",
         valorProduto: 380,
         id: 8,
         quantidade: 0,
@@ -117,24 +119,7 @@ class App extends React.Component {
     ],
     filtroCrescente: "",
     carrinho: [],
-    valorInputMinimo: '',
-    valorInputMaximo: '',
-    valorInputBusca: '',
-
   };
-
-  onChangeInputMinimo = (e) => {
-    this.setState({valorInputMinimo: e.target.value})   
-  }
- 
-  onChangeInputMaximo = (e) => {
-      this.setState({valorInputMaximo: e.target.value})
-      console.log(this.state.valorInputMaximo)
-  }
- 
-  onChangeInputBusca = (e) => {
-      this.setState({valorInputBusca: e.target.value})
-  }
 
   onChangeFiltroCrescente = (event) => {
     // Pegando o valor do filtro.
@@ -162,7 +147,6 @@ class App extends React.Component {
         });
     }
   };
-
   onDelete = (itemDelete) => {
     const novaLista = this.state.carrinho.filter((produto) => {
       return produto.id !== itemDelete.id;
@@ -221,7 +205,6 @@ class App extends React.Component {
 
     this.setState({ carrinho: novoCarrinho }); // Atualizando a lista.
   };
-
   render() {
     const quantidadeProdutos = this.state.arrayProdutos.length;
 
@@ -234,23 +217,7 @@ class App extends React.Component {
           funcaoClicar={() => this.onClickCarrinho(produto.id)}
         />
       );
-    });  
-    
-    const filtrarProdutos = this.state.arrayProdutos.filter((produto) => {  
-      if((produto.valorProduto <= this.state.valorInputMaximo && produto.valorProduto >= this.state.valorInputMinimo) || produto.nomeProduto === this.state.valorInputBusca){
-        return produto
-        } 
-      }
-    )
-
-    const produtosFiltrados = filtrarProdutos.map((elemento) => {
-      return (
-        <TabelaProdutos
-          nomeDoProduto={elemento.nomeProduto}
-          valorProduto={elemento.valorProduto}
-        />
-      )
-    })    
+    });
 
     const carrinhoRender = () => {
       const itensCarrinho = this.state.carrinho.map((produto) => {
@@ -260,7 +227,7 @@ class App extends React.Component {
             <p>Valor: R${produto.valorProduto}</p>
             <p>Quantidade: {produto.quantidade}</p>
             <ButtonDelete onClick={() => this.onDelete(produto)}>
-              Deletar
+              Deletar todas quantidades
             </ButtonDelete>
           </DivProdutosCarrinho>
         );
@@ -270,25 +237,16 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Header>
-        </Header>
         <SectionPagina>
+          <CardFiltro />
           <ContadorFiltro
             contadorProdutos={quantidadeProdutos}
             filtroOrdem={this.onChangeFiltroCrescente}
           />
-          <CardFiltro
-            inputMinimo={this.onChangeInputMinimo}
-            inputMaximo={this.onChangeInputMaximo}
-            inputBusca={this.onChangeInputBusca}
-          />
-          <DivPainel>{produtosFiltrados}</DivPainel>
           <DivPainel>{produtosRender}</DivPainel>
 
           <Carrinho funcaoCarrinho={carrinhoRender()}></Carrinho>
-
-        </SectionPagina>       
-
+        </SectionPagina>
         <Footer />
       </div>
     );
