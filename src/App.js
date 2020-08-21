@@ -53,16 +53,12 @@ const DivHeader = styled.div`
 
 class App extends React.Component {
   render() {
-    return (
-      <div className="App">
-        <Header />
-      </div>
-    );
+    
   }
   state = {
     arrayProdutos: [
       {
-        nomeProduto: "Traje  - Plutão",
+        nomeProduto: "Traje Plutão",
         imagemProduto:
           "https://www.bellacollezione.com/image/cache/catalog/products/masculino/fantasia-astronauta-do-espaco-adulto-mascote-branco-800x800.jpg",
         valorProduto: 100,
@@ -70,7 +66,7 @@ class App extends React.Component {
         quantidade: 0,
       },
       {
-        nomeProduto: "Traje - X",
+        nomeProduto: "Traje Vênus",
         imagemProduto:
           "https://www.bellacollezione.com/image/cache/catalog/products/masculino/fantasia-adulto-macacao-de-astronauta-autentico-800x800.jpg",
         valorProduto: 200,
@@ -78,7 +74,7 @@ class App extends React.Component {
         quantidade: 0,
       },
       {
-        nomeProduto: "Teste3",
+        nomeProduto: "Traje Mercúrio",
         imagemProduto:
           "https://www.dhresource.com/0x0/f2/albu/g9/M01/4E/D1/rBVaVVylqxqAPAhNAARi2g9O04s933.jpg",
         valorProduto: 400,
@@ -86,7 +82,7 @@ class App extends React.Component {
         quantidade: 0,
       },
       {
-        nomeProduto: "Teste4",
+        nomeProduto: "Traje Saturno",
         imagemProduto:
           "https://sc01.alicdn.com/kf/HTB1PsHLbjfguuRjy1zeq6z0KFXaI/231834524/HTB1PsHLbjfguuRjy1zeq6z0KFXaI.jpg_.webp",
         valorProduto: 350,
@@ -94,7 +90,7 @@ class App extends React.Component {
         quantidade: 0,
       },
       {
-        nomeProduto: "Teste5",
+        nomeProduto: "Traje Urano",
         imagemProduto:
           "https://cdn.awsli.com.br/800x800/488/488909/produto/37825150/5d2946d92d.jpg",
         valorProduto: 220,
@@ -102,7 +98,7 @@ class App extends React.Component {
         quantidade: 0,
       },
       {
-        nomeProduto: "Teste6",
+        nomeProduto: "Traje Netuno",
         imagemProduto:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQshlvVSZTG7fBTfDTMst0VgLn7MtzZ3O5oLg&usqp=CAU",
         valorProduto: 150,
@@ -110,7 +106,7 @@ class App extends React.Component {
         quantidade: 0,
       },
       {
-        nomeProduto: "Teste7",
+        nomeProduto: "Traje Marte",
         imagemProduto:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQc009wYjCJNW8er_XXgYK_hhFqEe_lZ-SRJQ&usqp=CAU",
         valorProduto: 250,
@@ -118,7 +114,7 @@ class App extends React.Component {
         quantidade: 0,
       },
       {
-        nomeProduto: "Teste8",
+        nomeProduto: "Traje Júpiter",
         imagemProduto:
           "https://www.bellacollezione.com/image/cache/catalog/products/infantil/fantasia-infantil-astronauta-classica-800x800.jpg",
         valorProduto: 380,
@@ -278,6 +274,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <Header />
         <SectionPagina>
 
           <CardFiltro
