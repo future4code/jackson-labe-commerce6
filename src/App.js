@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import ContadorFiltro from "./components/ContadorFiltro";
 
 const SectionPagina = styled.section`
-  background-color: #322E3F;
+  background-color: #322e3f;
   width: 100vw;
   height: 100%;
   color: #f2dfe2;
@@ -124,23 +124,23 @@ class App extends React.Component {
     ],
     filtroCrescente: "",
     carrinho: [],
-    valorInputMinimo: '',
-    valorInputMaximo: '',
-    valorInputBusca: ''
+    valorInputMinimo: "",
+    valorInputMaximo: "",
+    valorInputBusca: "",
   };
 
   onChangeInputMinimo = (e) => {
-    this.setState({valorInputMinimo: e.target.value})   
-  }
- 
+    this.setState({ valorInputMinimo: e.target.value });
+  };
+
   onChangeInputMaximo = (e) => {
-      this.setState({valorInputMaximo: e.target.value})
-      console.log(this.state.valorInputMaximo)
-  }
- 
+    this.setState({ valorInputMaximo: e.target.value });
+    console.log(this.state.valorInputMaximo);
+  };
+
   onChangeInputBusca = (e) => {
-      this.setState({valorInputBusca: e.target.value})
-  }
+    this.setState({ valorInputBusca: e.target.value });
+  };
 
   onChangeFiltroCrescente = (event) => {
     // Pegando o valor do filtro.
@@ -240,21 +240,25 @@ class App extends React.Component {
       );
     });
 
-    const filtrarProdutos = this.state.arrayProdutos.filter((produto) => {  
-      if((produto.valorProduto <= this.state.valorInputMaximo && produto.valorProduto >= this.state.valorInputMinimo) || produto.nomeProduto === this.state.valorInputBusca){
-        return produto
-        } 
+    const filtrarProdutos = this.state.arrayProdutos.filter((produto) => {
+      if (
+        (produto.valorProduto <= this.state.valorInputMaximo &&
+          produto.valorProduto >= this.state.valorInputMinimo) ||
+        produto.nomeProduto === this.state.valorInputBusca
+      ) {
+        return produto;
       }
-    )
+    });
 
     const produtosFiltrados = filtrarProdutos.map((elemento) => {
       return (
         <TabelaProdutos
           nomeDoProduto={elemento.nomeProduto}
           valorProduto={elemento.valorProduto}
+          funcaoClicar={() => this.onClickCarrinho(elemento.id)}
         />
-      )
-    })    
+      );
+    });
 
     const carrinhoRender = () => {
       const itensCarrinho = this.state.carrinho.map((produto) => {
@@ -276,7 +280,6 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <SectionPagina>
-
           <CardFiltro
             inputMinimo={this.onChangeInputMinimo}
             inputMaximo={this.onChangeInputMaximo}
@@ -287,8 +290,10 @@ class App extends React.Component {
             filtroOrdem={this.onChangeFiltroCrescente}
           />
 
-          <DivPainel>{produtosFiltrados}{produtosRender}</DivPainel>
-       
+          <DivPainel>
+            {produtosFiltrados}
+            {produtosRender}
+          </DivPainel>
 
           <Carrinho funcaoCarrinho={carrinhoRender()}></Carrinho>
         </SectionPagina>
